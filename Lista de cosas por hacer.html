@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Assets - Nivel 1 (Prólogo / Taller)</title>
+    <style>
+        :root {
+            --bg-color: #121214;
+            --card-bg: #1e1e24;
+            --primary: #00e676;
+            --accent: #ff9100;
+            --text-main: #e1e1e6;
+            --text-muted: #8d8d99;
+            --border: #29292e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .category {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .category h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .item {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        /* Checkbox personalizado */
+        .item input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--text-muted);
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            margin-right: 15px;
+            margin-top: 2px;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .item input[type="checkbox"]:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .item input[type="checkbox"]:checked::after {
+            content: '✔';
+            position: absolute;
+            color: #000;
+            font-size: 14px;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .item-text {
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 1rem;
+            display: block;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            display: block;
+        }
+
+        /* Estilo tachado cuando se completa */
+        .item input[type="checkbox"]:checked + .item-text .item-title {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .item input[type="checkbox"]:checked + .item-text .item-desc {
+            color: #4d4d57;
+        }
+
+        /* Botón de Reseteo */
+        .actions {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .reset-btn {
+            background-color: transparent;
+            border: 1px solid #e53935;
+            color: #e53935;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background-color: #e53935;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🛠️ Dashboard de Assets - Nivel 1</h1>
+        <p class="subtitle">Hoja de ruta de sprites para el prototipo en Godot</p>
+    </header>
+
+    <!-- CATEGORÍA 1 -->
+    <div class="category">
+        <h2>🏃 1. Personaje Principal</h2>
+        <ul class="checklist">
+            <li class="item">
+                <input type="checkbox" id="p1">
+                <label for="p1" class="item-text">
+                    <span class="item-title">Idle (Reposo)</span>
+                    <span class="item-desc">2 a 4 frames. El personaje respirando o esperando mirando a la derecha.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="p2">
+                <label for="p2" class="item-text">
+                    <span class="item-title">Caminar / Correr</span>
+                    <span class="item-desc">6 a 8 frames. Ciclo completo de caminata lateral.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="p3">
+                <label for="p3" class="item-text">
+                    <span class="item-title">Salto</span>
+                    <span class="item-desc">3 frames (Impulso, Flotando en el aire, Caída).</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="p4">
+                <label for="p4" class="item-text">
+                    <span class="item-title">Overlay de Disparo</span>
+                    <span class="item-desc">2 a 3 frames. Torso/brazo levantado disparando con fogonazo/chispas.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="p5">
+                <label for="p5" class="item-text">
+                    <span class="item-title">Recibir Daño (Hit)</span>
+                    <span class="item-desc">1 a 2 frames. Reacción al ser golpeado echándose hacia atrás.</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <!-- CATEGORÍA 2 -->
+    <div class="category">
+        <h2>⚡ 2. Armas e Ítems</h2>
+        <ul class="checklist">
+            <li class="item">
+                <input type="checkbox" id="a1">
+                <label for="a1" class="item-text">
+                    <span class="item-title">Pistolete de Batería 2.0</span>
+                    <span class="item-desc">Sprite del arma individual (con batería colgada) para el HUD o suelo.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="a2">
+                <label for="a2" class="item-text">
+                    <span class="item-title">VFX Rayo Eléctrico</span>
+                    <span class="item-desc">3 frames de chispas/rayo cian que salen de la boca del cañón.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="a3">
+                <label for="a3" class="item-text">
+                    <span class="item-title">Chancla Voladora (Proyectil)</span>
+                    <span class="item-desc">4 frames de la chancla girando en 360° en el aire.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="a4">
+                <label for="a4" class="item-text">
+                    <span class="item-title">Cartel de Impacto Chancla</span>
+                    <span class="item-desc">Sprite cómic tipo ¡THWACK! o ¡ZAPAZO! para el rebote.</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <!-- CATEGORÍA 3 -->
+    <div class="category">
+        <h2>👾 3. Primer Enemigo (Básico)</h2>
+        <ul class="checklist">
+            <li class="item">
+                <input type="checkbox" id="e1">
+                <label for="e1" class="item-text">
+                    <span class="item-title">Caminata de Enemigo</span>
+                    <span class="item-desc">4 frames avanzando de frente/costado hacia el jugador.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="e2">
+                <label for="e2" class="item-text">
+                    <span class="item-title">Ataque Básico</span>
+                    <span class="item-desc">2 frames (Manotazo, palazo o revoleo de herramienta).</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="e3">
+                <label for="e3" class="item-text">
+                    <span class="item-title">Muerte / Derrota</span>
+                    <span class="item-desc">3 frames volando despedido o cayendo de culo al suelo.</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <!-- CATEGORÍA 4 -->
+    <div class="category">
+        <h2>🧱 4. Escenario y Tileset</h2>
+        <ul class="checklist">
+            <li class="item">
+                <input type="checkbox" id="t1">
+                <label for="t1" class="item-text">
+                    <span class="item-title">Tiles del Suelo / Plataforma</span>
+                    <span class="item-desc">Bloque de vereda/piso de taller (Centro, Borde Izquierdo, Borde Derecho).</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="t2">
+                <label for="t2" class="item-text">
+                    <span class="item-title">Fondo Lejano (Parallax Layer 1)</span>
+                    <span class="item-desc">Cielo nocturno, cables de luz y siluetas de casas.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="t3">
+                <label for="t3" class="item-text">
+                    <span class="item-title">Fondo Medio (Parallax Layer 2)</span>
+                    <span class="item-desc">Pared de ladrillos vistos, portón de taller o persiana metálica.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="t4">
+                <label for="t4" class="item-text">
+                    <span class="item-title">Props de Decoración</span>
+                    <span class="item-desc">1 tacho de basura o lata de aceite + 1 rueda/cubierta tirada.</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <!-- CATEGORÍA 5 -->
+    <div class="category">
+        <h2>🖥️ 5. Interfaz de Usuario (HUD)</h2>
+        <ul class="checklist">
+            <li class="item">
+                <input type="checkbox" id="h1">
+                <label for="h1" class="item-text">
+                    <span class="item-title">Marco de Barra de Vida</span>
+                    <span class="item-desc">Medidor de batería o reloj de aceite para la vida.</span>
+                </label>
+            </li>
+            <li class="item">
+                <input type="checkbox" id="h2">
+                <label for="h2" class="item-text">
+                    <span class="item-title">Ícono de Chanclas</span>
+                    <span class="item-desc">Miniatura de chancla para el contador de granadas.</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <div class="actions">
+        <button class="reset-btn" onclick="resetChecklist()">Desmarcar Todo</button>
+    </div>
+</div>
+
+<script>
+    // Guardar estado en localStorage
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    // Cargar estado guardado
+    checkboxes.forEach(box => {
+        const savedState = localStorage.getItem(box.id);
+        if (savedState === 'true') {
+            box.checked = true;
+        }
+
+        // Guardar cada vez que cambia
+        box.addEventListener('change', () => {
+            localStorage.setItem(box.id, box.checked);
+        });
+    });
+
+    // Función para borrar todo el progreso
+    function resetChecklist() {
+        if (confirm('¿Quieres desmarcar todas las palomitas?')) {
+            checkboxes.forEach(box => {
+                box.checked = false;
+                localStorage.removeItem(box.id);
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
